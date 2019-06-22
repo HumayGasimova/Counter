@@ -5,11 +5,10 @@ import {
 } from "../constants/action-types";
 
 const initialState = {
-    articles: [],
-    remoteArticles: []
+    counter: 0
   };
 
-function exampleReducer(state = initialState, action) {
+function counterReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ARTICLE:
         return Object.assign({}, state, {
@@ -24,4 +23,4 @@ function exampleReducer(state = initialState, action) {
       return state;
 };
 
-export default exampleReducer;
+export default counterReducer;

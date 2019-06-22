@@ -1,8 +1,8 @@
 
-import exampleReducer from './exampleReducer';
+// import exampleReducer from './exampleReducer';
 
-const rootReducers = {
-    exampleReducer
-}
+// const rootReducers = {
+//     exampleReducer
+// }
 
-export default rootReducers;
+// export default rootReducers;

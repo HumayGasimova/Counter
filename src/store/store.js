@@ -22,7 +22,7 @@ import {
 import thunk from 'redux-thunk';
 
 // import rootReducers from "../reducers/rootReducer";
-import exampleReducer from '../reducers/exampleReducer';
+import counterReducer from '../reducers/counterReducer';
 
 /**
  * first way to add logger
@@ -56,6 +56,6 @@ if (process.env.ENVIRONMENT !== 'production') {
 }
 
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
-const store = createStoreWithMiddleware(exampleReducer)
+const store = createStoreWithMiddleware(counterReducer)
 
 export default store;
