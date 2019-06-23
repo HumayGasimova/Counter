@@ -1,2 +1,4 @@
-export const ADD_ARTICLE = "ADD_ARTICLE";
-export const DATA_LOADED = "DATA_LOADED";
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const ADD_5 = "ADD_5";
+export const SUBSTRACT_5 = "SUBSTRACT_5";

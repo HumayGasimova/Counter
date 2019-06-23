@@ -34,7 +34,8 @@ export class App extends Component {
    constructor(props){
     super(props);
     this.state = {
-        counter: 0
+        counter: 0,
+        pressed: false
     }
    }
   
@@ -59,32 +60,42 @@ export class App extends Component {
    render(){
       return(
        <div>
-           <Header value={this.state.counter}/>
+           <Header value={this.props.counter}/>
            <div className="buttonOrder">
                 <Button 
-                        value={this.state.counter}
-                        label={'Inc'}
-                        state={this.state}
-                        counter={this.counter}
+                        // value={this.state.counter}
+                        // label={'Inc'}
+                        // state={this.state}
+                        // counter={this.counter}
+                        onClick={this.props.onIncrementCounter}
                 >
                             Increment
                 </Button>
-                <Button value={this.state.counter}
-                        label={'Dec'}
-                        state={this.state}
-                        counter={this.counter}>
+                <Button 
+                        // value={this.state.counter}
+                        // label={'Dec'}
+                        // state={this.state}
+                        // counter={this.counter}
+                        onClick={this.props.onDecrementCounter}
+                        >
                             Decrement
                 </Button>
-                <Button value={this.state.counter}
-                        label={'Add5'}
-                        state={this.state}
-                        counter={this.counter}>
+                <Button 
+                        // value={this.state.counter}
+                        // label={'Add5'}
+                        // state={this.state}
+                        // counter={this.counter}
+                        onClick={this.props.add5ToCounter}
+                        >
                             Add 5
                 </Button>
-                <Button value={this.state.counter}
-                        label={'Sub5'}
-                        state={this.state}
-                        counter={this.counter}>
+                <Button 
+                        // value={this.state.counter}
+                        // label={'Sub5'}
+                        // state={this.state}
+                        // counter={this.counter}
+                        onClick={this.props.substarct5FromCounter}
+                        >
                             Substract 5
                 </Button>
            </div>
@@ -102,9 +113,13 @@ const mapStateToProps = state => {
        counter: state.counter
     }
 }
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
     return {
-       onIncrementCounter: () => dispatch({type: 'INCREMENT'})
+       onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
+       onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
+       add5ToCounter: () => dispatch({type: 'ADD_5'}),
+       substarct5FromCounter: () => dispatch({type: 'SUBSTRACT_5'}),
+
     }
 }
  

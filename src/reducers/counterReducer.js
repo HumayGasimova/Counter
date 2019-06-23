@@ -1,7 +1,9 @@
 
 import { 
-  ADD_ARTICLE,
-  DATA_LOADED
+  INCREMENT,
+  DECREMENT,
+  ADD_5,
+  SUBSTRACT_5
 } from "../constants/action-types";
 
 const initialState = {
@@ -10,15 +12,23 @@ const initialState = {
 
 function counterReducer(state = initialState, action) {
   switch (action.type) {
-    case ADD_ARTICLE:
-        return Object.assign({}, state, {
-          articles: state.articles.concat(action.payload)
-        });
+    case INCREMENT:
+        return {
+          counter: state.counter +1
+        }
+    case DECREMENT:
+        return {
+          counter: state.counter -1
+        }
+    case ADD_5:
+        return {
+          counter: state.counter +5
+        }
     
-    case DATA_LOADED:
-        return Object.assign({}, state, {
-          remoteArticles: state.remoteArticles.concat(action.payload)
-        });
+    case SUBSTRACT_5:
+        return {
+          counter: state.counter -5
+        }
   }
       return state;
 };

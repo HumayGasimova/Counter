@@ -47,8 +47,9 @@ import React,{
  
     render(){
        return(
-         <div className="button"
-            onClick={()=>this.handleOnClick(this.props.label)}
+         <div className={this.props.pressed ? "buttonPressed":"button"}
+            // onClick={()=>this.handleOnClick(this.props.label)}
+            onClick={this.props.onClick}
             >
           {this.props.children}
        </div>
