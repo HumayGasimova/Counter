@@ -6,13 +6,11 @@ import React,{
     Component
  } from 'react';
  
- /**
-  * Components
-  */
  
- /**
-  * Styles
-  */
+/**
+ * Styles
+ */
+
  import './header.scss';
  
  /**
@@ -21,32 +19,17 @@ import React,{
 
  export class Header extends Component {
  
-    /**
-     * Constructor
-     */
- 
-   
-    /**
-     * Methods
-     */
- 
- 
-    /**
-     * Markup
-     */
- 
     render(){
        return(
          <div className="header">
-           Header
+          {this.props.value}
        </div>
        );
     }
  }
  
- /**
-  * Prop types
-  */
- 
+/**
+ * Prop types
+ */ 
  
  export default Header;

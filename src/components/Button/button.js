@@ -7,12 +7,9 @@ import React,{
  } from 'react';
  
  /**
-  * Components
-  */
- 
- /**
   * Styles
   */
+
  import './button.scss';
  
  /**
@@ -20,16 +17,29 @@ import React,{
   */
 
  export class Button extends Component {
- 
-    /**
-     * Constructor
-     */
- 
-   
+
     /**
      * Methods
      */
- 
+
+   handleOnClick = (x) => {
+      let state = this.props.value
+
+      switch(x){
+         case 'Inc':
+            let inc = state + 1;
+            return this.props.counter(inc)
+         case 'Dec':
+            let dec = state - 1;
+            return this.props.counter(dec)
+         case 'Add5':
+            let add5 = state + 5;
+               return this.props.counter(add5)
+         case 'Sub5': 
+            let sub5 = state - 5
+            return this.props.counter(sub5)
+      }
+   }
  
     /**
      * Markup
@@ -37,8 +47,10 @@ import React,{
  
     render(){
        return(
-         <div className="button">
-           Button
+         <div className="button"
+            onClick={()=>this.handleOnClick(this.props.label)}
+            >
+          {this.props.children}
        </div>
        );
     }
@@ -47,6 +59,5 @@ import React,{
  /**
   * Prop types
   */
- 
  
  export default Button;
