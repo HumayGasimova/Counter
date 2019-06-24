@@ -110,7 +110,7 @@ export class App extends Component {
               {this.props.storedResults.map((strResult)=>{
                  return(
                      <li key={strResult.id}
-                        onClick={this.props.deleteResult}>
+                        onClick={()=>this.props.deleteResult(strResult.id)}>
                         {strResult.value}
                      </li>
                  )
@@ -138,7 +138,7 @@ const mapDispatchToProps = dispatch => {
        add5ToCounter: () => dispatch({type: 'ADD_5', val: 5}),
        substarct5FromCounter: () => dispatch({type: 'SUBSTRACT_5', val: 5}),
        storeResult: () => dispatch({type: 'STORE_RESULT'}),
-      //  deleteResult: () => dispatch({type: 'DELETE_RESULT'})
+       deleteResult: (id) => dispatch({type: 'DELETE_RESULT', resultElId: id})
 
     }
 }
