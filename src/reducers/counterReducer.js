@@ -2,8 +2,7 @@
 import * as actionTypes from "../constants/action-types";
 
 const initialState = {
-    counter: 0,
-    results: []
+    counter: 0
   };
 
 function counterReducer(state = initialState, action) {
@@ -29,17 +28,6 @@ function counterReducer(state = initialState, action) {
           ...state,
           counter: state.counter - action.val
         }
-    case actionTypes.STORE_RESULT:
-      return {
-        ...state,
-        results: state.results.concat({id: new Date().getTime(), value: state.counter})
-      }
-    case actionTypes.DELETE_RESULT:
-      const updatedArray = state.results.filter(x => x.id !== action.resultElId)
-      return {
-        ...state,
-        results: updatedArray
-      }
   }
       return state;
 };

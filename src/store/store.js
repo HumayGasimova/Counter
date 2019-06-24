@@ -6,15 +6,13 @@
 import {
     createStore,
     applyMiddleware,
-    compose
+    combineReducers
 } from "redux";
 
-import {
-    combineReducers
-} from 'redux';
 // import {
 //     logger
 // } from 'redux-logger';
+
 import {
         createLogger
     } from 'redux-logger';
@@ -23,6 +21,16 @@ import thunk from 'redux-thunk';
 
 // import rootReducers from "../reducers/rootReducer";
 import counterReducer from '../reducers/counterReducer';
+import resultReducer from '../reducers/resultReducer';
+
+/**
+ * Combine Reducers
+ */
+
+const rootReducer = combineReducers({
+    ctr: counterReducer,
+    res: resultReducer
+})
 
 /**
  * first way to add logger
@@ -56,6 +64,6 @@ if (process.env.ENVIRONMENT !== 'production') {
 }
 
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
-const store = createStoreWithMiddleware(counterReducer)
+const store = createStoreWithMiddleware(rootReducer)
 
 export default store;

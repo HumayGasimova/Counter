@@ -107,7 +107,7 @@ export class App extends Component {
            </div>
            <div>
                  <Button 
-                        onClick={this.props.storeResult}
+                        onClick={() => this.props.storeResult(this.props.counter)}
                         >
                             Result
                 </Button>
@@ -133,8 +133,8 @@ export class App extends Component {
 
 const mapStateToProps = state => {
     return {
-       counter: state.counter,
-       storedResults: state.results
+       counter: state.ctr.counter,
+       storedResults: state.res.results
     }
 }
 const mapDispatchToProps = dispatch => {
@@ -143,7 +143,7 @@ const mapDispatchToProps = dispatch => {
        onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
        add5ToCounter: () => dispatch({type: actionTypes.ADD_5, val: 5}),
        subtract5FromCounter: () => dispatch({type: actionTypes.SUBTRACT_5, val: 5}),
-       storeResult: () => dispatch({type: actionTypes.STORE_RESULT}),
+       storeResult: (res) => dispatch({type: actionTypes.STORE_RESULT, result: res}),
        deleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
 
     }
