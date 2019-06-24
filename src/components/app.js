@@ -23,6 +23,12 @@ import Button from './Button/button';
 
 import './app.scss';
 
+ /**
+ * Constants
+ */
+import * as actionTypes from '../constants/action-types';
+
+
 /**
  *  Post component definition and export
  */
@@ -94,9 +100,9 @@ export class App extends Component {
                         // label={'Sub5'}
                         // state={this.state}
                         // counter={this.counter}
-                        onClick={this.props.substarct5FromCounter}
+                        onClick={this.props.subtract5FromCounter}
                         >
-                            Substract 5
+                            Subtract 5
                 </Button>
            </div>
            <div>
@@ -133,12 +139,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-       onIncrementCounter: () => dispatch({type: 'INCREMENT'}),
-       onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
-       add5ToCounter: () => dispatch({type: 'ADD_5', val: 5}),
-       substarct5FromCounter: () => dispatch({type: 'SUBSTRACT_5', val: 5}),
-       storeResult: () => dispatch({type: 'STORE_RESULT'}),
-       deleteResult: (id) => dispatch({type: 'DELETE_RESULT', resultElId: id})
+       onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
+       onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
+       add5ToCounter: () => dispatch({type: actionTypes.ADD_5, val: 5}),
+       subtract5FromCounter: () => dispatch({type: actionTypes.SUBTRACT_5, val: 5}),
+       storeResult: () => dispatch({type: actionTypes.STORE_RESULT}),
+       deleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
 
     }
 }

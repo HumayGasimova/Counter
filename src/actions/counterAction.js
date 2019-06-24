@@ -2,7 +2,7 @@
 //     INCREMENT,
 //     DECREMENT,
 //     ADD_5,
-//     SUBSTRACT_5
+//     SUBTRACT_5
 // } from "../constants/action-types";
 
 // export function incrementCounter() {
@@ -25,9 +25,9 @@
 //     }
 //   };
 
-// export function substract5fromCounter(payload) {
+// export function subtract5fromCounter(payload) {
 //     return { 
-//         type: SUBSTRACT_5, 
+//         type: SUBTRACT_5, 
 //         payload 
 //     }
 // };
