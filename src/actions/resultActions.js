@@ -6,13 +6,13 @@ import {
 export function storeResult(res) {
     return { 
         type: STORE_RESULT,
-        number: res
+        value: res
     }
   };
 
 export function deleteResult(id) {
     return { 
         type: DELETE_RESULT, 
-        number: id
+        id: id
     }
 };

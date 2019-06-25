@@ -10,10 +10,10 @@ function resultReducer(state = initialState, action) {
     case actionTypes.STORE_RESULT:
       return {
         ...state,
-        results: state.results.concat({id: new Date().getTime(), value: action.result})
+        results: state.results.concat({id: new Date().getTime(), value: action.value})
       }
     case actionTypes.DELETE_RESULT:
-      const updatedArray = state.results.filter(x => x.id !== action.resultElId)
+      const updatedArray = state.results.filter(x => x.id !== action.id)
       return {
         ...state,
         results: updatedArray

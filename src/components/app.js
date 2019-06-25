@@ -94,18 +94,18 @@ export class App extends Component {
                             Result
                 </Button>
            </div>
+           <div>
            <ul>
               {this.props.storedResults.map((strResult)=>{
                  return(
                      <li key={strResult.id}
-                        onClick={()=>this.props.deleteResult(strResult.id)}>
+                        onClick={()=>this.props.deleteResult(strResult.id)}
+                        >
                         {strResult.value}
                      </li>
                  )
               })}
            </ul>
-           <div>
-           
            </div>
         </div>
       );
