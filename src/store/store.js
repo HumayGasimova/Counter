@@ -42,11 +42,6 @@ const rootReducer = combineReducers({
 //   storeEnhancers(applyMiddleware(logger, thunk))
 // );
 
-
-/**
- * second way to add logger
- */
-
 const middleware = [thunk];
 
 /**
@@ -63,7 +58,17 @@ if (process.env.ENVIRONMENT !== 'production') {
     middleware.push(logger);
 }
 
-const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
-const store = createStoreWithMiddleware(rootReducer)
+/**
+ * second way to add logger
+ */
 
-export default store;
+// const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
+// const store = createStoreWithMiddleware(rootReducer)
+
+// export default store;
+
+/**
+ * third way to add logger
+ */
+
+export default createStore(rootReducer, applyMiddleware(logger));
