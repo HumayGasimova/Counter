@@ -16,6 +16,7 @@ import {
 
 import Header from './Header/header';
 import Button from './Button/button';
+import InputField from './InputField/inputField';
 
 /**
  * Styles
@@ -39,9 +40,8 @@ export class App extends Component {
     */
    constructor(props){
     super(props);
-    this.state = {
-        counter: 0,
-        pressed: false
+    this.state={
+      inputValue: 0
     }
    }
   
@@ -49,13 +49,13 @@ export class App extends Component {
     * Methods
     */
 
-   counter = (x) => {
+   inputNumber = (x) => {
       return this.manageState(x)
    }
 
    manageState = (x) => {
     this.setState({
-        counter: x
+      inputValue: x
     })
    }
 
@@ -67,43 +67,14 @@ export class App extends Component {
       return(
        <div>
            <Header value={this.props.counter}/>
-           <div className="buttonOrder">
-                <Button 
-                        // value={this.state.counter}
-                        // label={'Inc'}
-                        // state={this.state}
-                        // counter={this.counter}
-                        onClick={this.props.onIncrementCounter}
-                >
-                            Increment
-                </Button>
-                <Button 
-                        // value={this.state.counter}
-                        // label={'Dec'}
-                        // state={this.state}
-                        // counter={this.counter}
-                        onClick={this.props.onDecrementCounter}
-                        >
-                            Decrement
-                </Button>
-                <Button 
-                        // value={this.state.counter}
-                        // label={'Add5'}
-                        // state={this.state}
-                        // counter={this.counter}
-                        onClick={this.props.add5ToCounter}
-                        >
-                            Add 5
-                </Button>
-                <Button 
-                        // value={this.state.counter}
-                        // label={'Sub5'}
-                        // state={this.state}
-                        // counter={this.counter}
-                        onClick={this.props.subtract5FromCounter}
-                        >
-                            Subtract 5
-                </Button>
+           
+           <div>
+             <InputField
+               onIncrementCounter={this.props.onIncrementCounter}
+               onDecrementCounter={this.props.onDecrementCounter}
+               multiplyCounter={this.props.multiplyCounter}
+               divideCounter={this.props.divideCounter}
+             />
            </div>
            <div>
                  <Button 
@@ -122,6 +93,9 @@ export class App extends Component {
                  )
               })}
            </ul>
+           <div>
+           
+           </div>
         </div>
       );
    }
@@ -139,13 +113,12 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-       onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-       onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-       add5ToCounter: () => dispatch({type: actionTypes.ADD_5, val: 5}),
-       subtract5FromCounter: () => dispatch({type: actionTypes.SUBTRACT_5, val: 5}),
+       onIncrementCounter: (num) => dispatch({type: actionTypes.INCREMENT, number: num}),
+       onDecrementCounter: (num) => dispatch({type: actionTypes.DECREMENT, number: num}),
+       multiplyCounter: (num) => dispatch({type: actionTypes.MULTIPLY, number: num}),
+       divideCounter: (num) => dispatch({type: actionTypes.DIVIDE, number: num}),
        storeResult: (res) => dispatch({type: actionTypes.STORE_RESULT, result: res}),
        deleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
-
     }
 }
  
