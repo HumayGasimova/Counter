@@ -10,6 +10,10 @@ import {
     connect
  } from 'react-redux';
 
+ import {
+    bindActionCreators
+ } from 'redux';
+
 /**
  * Components
  */
@@ -27,8 +31,15 @@ import './app.scss';
  /**
  * Constants
  */
+
 import * as actionTypes from '../constants/action-types';
 
+ /**
+ * Actions
+ */
+
+import * as counterActions from '../actions/counterAction';
+import * as resultActions from '../actions/resultActions';
 
 /**
  *  Post component definition and export
@@ -104,22 +115,22 @@ export class App extends Component {
 /**
  * Prop types
  */
-
-const mapStateToProps = state => {
-    return {
-       counter: state.ctr.counter,
-       storedResults: state.res.results
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-       onIncrementCounter: (num) => dispatch({type: actionTypes.INCREMENT, number: num}),
-       onDecrementCounter: (num) => dispatch({type: actionTypes.DECREMENT, number: num}),
-       multiplyCounter: (num) => dispatch({type: actionTypes.MULTIPLY, number: num}),
-       divideCounter: (num) => dispatch({type: actionTypes.DIVIDE, number: num}),
-       storeResult: (res) => dispatch({type: actionTypes.STORE_RESULT, result: res}),
-       deleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId: id})
-    }
-}
  
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+   (state) => {
+      return {
+         counter: state.ctr.counter,
+         storedResults: state.res.results
+      };
+   },
+   (dispatch) => {
+      return {
+         onIncrementCounter: bindActionCreators(counterActions.onIncrementCounter, dispatch),
+         onDecrementCounter: bindActionCreators(counterActions.onDecrementCounter, dispatch),
+         multiplyCounter: bindActionCreators(counterActions.multiplyCounter, dispatch),
+         divideCounter: bindActionCreators(counterActions.divideCounter, dispatch),
+         storeResult: bindActionCreators(resultActions.storeResult, dispatch),
+         deleteResult: bindActionCreators(resultActions.deleteResult, dispatch)
+      };
+   }
+)(App);

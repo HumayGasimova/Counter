@@ -1,36 +1,37 @@
-// import { 
-//     INCREMENT,
-//     DECREMENT,
-//     ADD_5,
-//     SUBTRACT_5
-// } from "../constants/action-types";
+import { 
+    INCREMENT,
+    DECREMENT,
+    MULTIPLY,
+    DIVIDE
+} from "../constants/action-types";
 
-// export function incrementCounter() {
-//     return { 
-//         type: INCREMENT
-//     }
-//   };
+export function onIncrementCounter(num) {
+    return { 
+        type: INCREMENT,
+        number: num
+    }
+  };
 
-// export function decrementCounter(payload) {
-//     return { 
-//         type: DECREMENT, 
-//         payload 
-//     }
-// };
+export function onDecrementCounter(num) {
+    return { 
+        type: DECREMENT, 
+        number: num
+    }
+};
 
-// export function add5ToCounter(payload) {
-//     return { 
-//         type: ADD_5, 
-//         payload 
-//     }
-//   };
+export function multiplyCounter(num) {
+    return { 
+        type: MULTIPLY, 
+        number: num
+    }
+  };
 
-// export function subtract5fromCounter(payload) {
-//     return { 
-//         type: SUBTRACT_5, 
-//         payload 
-//     }
-// };
+export function divideCounter(num) {
+    return { 
+        type: DIVIDE, 
+        number: num
+    }
+};
 
 
 
