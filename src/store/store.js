@@ -51,6 +51,21 @@ const middleware = [thunk];
 const logger = createLogger({ collapsed: true });
 
 /**
+ * own middleware
+ */
+
+// const logger = store => {
+//     return next => {
+//         return action => {
+//             console.log('[Middleware] Dispatching', action);
+//             const result = next(action);
+//             console.log('[Middleware] Dispatching', store.getState())
+//             return result;        
+//         }
+//     }
+// }
+
+/**
  * do not show in production
  */
 
