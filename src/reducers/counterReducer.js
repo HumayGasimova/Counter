@@ -1,5 +1,8 @@
 
 import * as actionTypes from "../constants/action-types";
+import {
+  updateObject
+} from './utility';
 
 const initialState = {
     counter: 0
@@ -13,10 +16,8 @@ function counterReducer(state = initialState, action) {
         return newState;
         
     case actionTypes.DECREMENT:
-        return {
-          ...state,
-          counter: state.counter - action.number
-        }
+      return updateObject(state, {counter: state.counter - action.number});
+      
     case actionTypes.MULTIPLY:
         return {
           ...state,
