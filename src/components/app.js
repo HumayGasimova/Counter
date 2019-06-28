@@ -32,12 +32,11 @@ import './app.scss';
  * Constants
  */
 
-import * as actionTypes from '../constants/action-types';
 
  /**
  * Actions
  */
-
+import * as Actions from '../actions/index';
 import * as counterActions from '../actions/counterAction';
 import * as resultActions from '../actions/resultActions';
 
@@ -125,12 +124,12 @@ export default connect(
    },
    (dispatch) => {
       return {
-         onIncrementCounter: bindActionCreators(counterActions.increment, dispatch),
-         onDecrementCounter: bindActionCreators(counterActions.decrement, dispatch),
-         multiplyCounter: bindActionCreators(counterActions.multiply, dispatch),
-         divideCounter: bindActionCreators(counterActions.divide, dispatch),
-         storeResult: bindActionCreators(resultActions.storeResult, dispatch),
-         deleteResult: bindActionCreators(resultActions.deleteResult, dispatch)
+         onIncrementCounter: bindActionCreators(Actions.increment, dispatch),
+         onDecrementCounter: bindActionCreators(Actions.decrement, dispatch),
+         multiplyCounter: bindActionCreators(Actions.multiply, dispatch),
+         divideCounter: bindActionCreators(Actions.divide, dispatch),
+         storeResult: bindActionCreators(Actions.storeResult, dispatch),
+         deleteResult: bindActionCreators(Actions.deleteResult, dispatch)
       };
    }
 )(App);

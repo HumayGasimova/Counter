@@ -1,9 +1,4 @@
-import { 
-    INCREMENT,
-    DECREMENT,
-    MULTIPLY,
-    DIVIDE
-} from "../constants/action-types";
+import * as actionTypes from "../constants/action-types";
 
 
 // export const saveResult = (num) => {
@@ -14,7 +9,7 @@ export function increment(num) {
     return dispatch => {
         setTimeout(() => {
             dispatch({ 
-                    type: INCREMENT,
+                    type: actionTypes.INCREMENT,
                     number: num
                 })
         }, 2000)
@@ -23,21 +18,21 @@ export function increment(num) {
 
 export function decrement(num) {
     return { 
-        type: DECREMENT, 
+        type: actionTypes.DECREMENT, 
         number: num
     }
 };
 
 export function multiply(num) {
     return { 
-        type: MULTIPLY, 
+        type: actionTypes.MULTIPLY, 
         number: num
     }
   };
 
 export function divide(num) {
     return { 
-        type: DIVIDE, 
+        type: actionTypes.DIVIDE, 
         number: num
     }
 };
