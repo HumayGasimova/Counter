@@ -6,7 +6,8 @@
 import {
     createStore,
     applyMiddleware,
-    combineReducers
+    combineReducers,
+    compose
 } from "redux";
 
 // import {
@@ -57,6 +58,7 @@ const logger = createLogger({ collapsed: true });
 // const logger = store => {
 //     return next => {
 //         return action => {
+//             console.log('[Middleware] Dispatching', store.getState())
 //             console.log('[Middleware] Dispatching', action);
 //             const result = next(action);
 //             console.log('[Middleware] Dispatching', store.getState())
@@ -85,5 +87,10 @@ if (process.env.ENVIRONMENT !== 'production') {
 /**
  * third way to add logger
  */
-
-export default createStore(rootReducer, applyMiddleware(logger));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export default createStore(
+    rootReducer, 
+    composeEnhancers(
+        applyMiddleware(logger)
+        )
+    );
