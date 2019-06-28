@@ -6,8 +6,10 @@ import * as actionTypes from "../constants/action-types";
 //     }
 
 export function increment(num) {
-    return dispatch => {
+    return (dispatch, getState) => {
         setTimeout(() => {
+            const oldCounter = getState().ctr.counter
+            console.log(oldCounter)
             dispatch({ 
                     type: actionTypes.INCREMENT,
                     number: num
