@@ -1,9 +1,17 @@
 
 import * as actionTypes from "../constants/action-types";
 
+import {
+  updateObject
+} from './utility';
+
 const initialState = {
     results: []
   };
+const deleteResult = (state, action) => {
+   const updatedArray = state.results.filter(x => x.id !== action.id)
+  return updateObject(state, { results: updatedArray})
+}
 
 function resultReducer(state = initialState, action) {
   switch (action.type) {
@@ -13,11 +21,7 @@ function resultReducer(state = initialState, action) {
         results: state.results.concat({id: new Date().getTime(), value: action.value})
       }
     case actionTypes.DELETE_RESULT:
-      const updatedArray = state.results.filter(x => x.id !== action.id)
-      return {
-        ...state,
-        results: updatedArray
-      }
+      return deleteResult(state, action)
   }
       return state;
 };
