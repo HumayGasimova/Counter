@@ -43,7 +43,7 @@ const rootReducer = combineReducers({
 //   storeEnhancers(applyMiddleware(logger, thunk))
 // );
 
-const middleware = [thunk];
+const middleware = [];
 
 /**
  * actions in a collapsed view
@@ -91,6 +91,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default createStore(
     rootReducer, 
     composeEnhancers(
-        applyMiddleware(logger)
+        applyMiddleware(logger,thunk)
         )
     );

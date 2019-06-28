@@ -125,10 +125,10 @@ export default connect(
    },
    (dispatch) => {
       return {
-         onIncrementCounter: bindActionCreators(counterActions.onIncrementCounter, dispatch),
-         onDecrementCounter: bindActionCreators(counterActions.onDecrementCounter, dispatch),
-         multiplyCounter: bindActionCreators(counterActions.multiplyCounter, dispatch),
-         divideCounter: bindActionCreators(counterActions.divideCounter, dispatch),
+         onIncrementCounter: bindActionCreators(counterActions.increment, dispatch),
+         onDecrementCounter: bindActionCreators(counterActions.decrement, dispatch),
+         multiplyCounter: bindActionCreators(counterActions.multiply, dispatch),
+         divideCounter: bindActionCreators(counterActions.divide, dispatch),
          storeResult: bindActionCreators(resultActions.storeResult, dispatch),
          deleteResult: bindActionCreators(resultActions.deleteResult, dispatch)
       };

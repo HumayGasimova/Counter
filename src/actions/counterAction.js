@@ -5,28 +5,37 @@ import {
     DIVIDE
 } from "../constants/action-types";
 
-export function onIncrementCounter(num) {
-    return { 
-        type: INCREMENT,
-        number: num
+
+// export const saveResult = (num) => {
+        
+//     }
+
+export function increment(num) {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch({ 
+                    type: INCREMENT,
+                    number: num
+                })
+        }, 2000)
     }
   };
 
-export function onDecrementCounter(num) {
+export function decrement(num) {
     return { 
         type: DECREMENT, 
         number: num
     }
 };
 
-export function multiplyCounter(num) {
+export function multiply(num) {
     return { 
         type: MULTIPLY, 
         number: num
     }
   };
 
-export function divideCounter(num) {
+export function divide(num) {
     return { 
         type: DIVIDE, 
         number: num
