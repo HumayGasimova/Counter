@@ -106,7 +106,7 @@ export default createStore(
         applyMiddleware(
             routerMiddleware(history),
             logger,
-            thunk)
+            thunk
+            )
         )
     );
-    

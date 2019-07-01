@@ -43,12 +43,12 @@ ReactDOM.render(
                   exact 
                   path="/WelcomePage"
                   component={WelcomePage}/>
-                <Route 
+               <Route 
                   exact 
                   path="/App"
                   component={App}/>
             </Switch>
          </ConnectedRouter>
-   </Provider>,
+      </Provider>,
    document.getElementById('app')
 );
