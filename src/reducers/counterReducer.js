@@ -33,13 +33,13 @@ const divide = (state, action) => {
 }
   
 function counterReducer(state = initialState, action) {
-  switch (action.type) {
+  switch (action.type){
     case actionTypes.INCREMENT: return increment(state, action);
     case actionTypes.DECREMENT: return decrement(state, action);
     case actionTypes.MULTIPLY: return  multiply(state, action);
     case actionTypes.DIVIDE: return divide(state, action);
+    default: return state;
   }
-      return state;
 };
 
 export default counterReducer;

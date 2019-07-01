@@ -8,6 +8,19 @@ import {
    Provider
 } from 'react-redux';
 
+import {
+   Route,
+   Switch
+} from 'react-router-dom';
+
+import {
+   ConnectedRouter
+} from 'connected-react-router';
+
+import {
+    history 
+   } from './store/store';
+
 import store from "./store/store";
 
 /**
@@ -15,11 +28,27 @@ import store from "./store/store";
  */
 
 import App from './components/App';
+import WelcomePage from './components/WelcomePage/welcomePage';
 
 
 ReactDOM.render(
    <Provider store={store}>
-         <App/>
+      <ConnectedRouter history={history}>
+         <Switch>
+               <Route 
+                  exact 
+                  path="/"
+                  render={()=>(<div>Hey</div>)}/>
+               <Route 
+                  exact 
+                  path="/WelcomePage"
+                  component={WelcomePage}/>
+                <Route 
+                  exact 
+                  path="/App"
+                  component={App}/>
+            </Switch>
+         </ConnectedRouter>
    </Provider>,
    document.getElementById('app')
 );

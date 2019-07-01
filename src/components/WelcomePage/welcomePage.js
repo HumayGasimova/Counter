@@ -1,0 +1,68 @@
+/**
+ * Libraries
+ */
+
+import React,{
+    Component
+ } from 'react';
+ 
+ import {
+     connect
+  } from 'react-redux';
+ 
+  import {
+     bindActionCreators
+  } from 'redux';
+ 
+ /**
+  * Components
+  */
+ 
+
+ 
+ /**
+  * Styles
+  */
+ 
+
+  /**
+  * Constants
+  */
+ 
+ 
+  /**
+  * Actions
+  */
+ 
+ 
+ /**
+  *  Post component definition and export
+  */
+ export class WelcomePage extends Component {
+ 
+    /**
+     * Constructor
+     */
+   
+     /**
+     * Methods
+     */
+ 
+    /**
+     * Markup
+     */
+ 
+    render(){
+       return(
+        <div>
+           Welcome
+         </div>
+       );
+    }
+ }
+ 
+ /**
+  * Prop types
+  */
+  
+ export default WelcomePage;

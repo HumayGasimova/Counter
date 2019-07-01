@@ -20,18 +20,26 @@ import {
 
 import thunk from 'redux-thunk';
 
+import { 
+    createBrowserHistory 
+} from 'history';
+import { 
+    routerMiddleware 
+} from 'connected-react-router';
+import createRootReducer from '../reducers/reducers';
+
 // import rootReducers from "../reducers/rootReducer";
-import counterReducer from '../reducers/counterReducer';
-import resultReducer from '../reducers/resultReducer';
+// import counterReducer from '../reducers/counterReducer';
+// import resultReducer from '../reducers/resultReducer';
 
 /**
  * Combine Reducers
  */
 
-const rootReducer = combineReducers({
-    ctr: counterReducer,
-    res: resultReducer
-})
+// const rootReducer = combineReducers({
+//     ctr: counterReducer,
+//     res: resultReducer
+// })
 
 /**
  * first way to add logger
@@ -87,10 +95,18 @@ if (process.env.ENVIRONMENT !== 'production') {
 /**
  * third way to add logger
  */
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+export const history = createBrowserHistory();
+
 export default createStore(
-    rootReducer, 
+    createRootReducer(history), 
     composeEnhancers(
-        applyMiddleware(logger,thunk)
+        applyMiddleware(
+            routerMiddleware(history),
+            logger,
+            thunk)
         )
     );
+    
