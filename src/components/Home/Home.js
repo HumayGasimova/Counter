@@ -66,7 +66,9 @@ import React,{
         <div className="header">
               <a href="http://localhost:8084/">Welcome</a>
               <div className="verticalDiv"/>
-              <Link to="/Home/Counter">Conter</Link>
+              <Link to={{
+                 pathname: this.props.match.url + '/Counter'
+              }}>Conter</Link>
          </div>
        );
     }
