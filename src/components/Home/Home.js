@@ -65,7 +65,7 @@ import React,{
        return(
         <div className="header">
               <a href="http://localhost:8084/">Welcome</a>
-              <div className="emptyDiv"/>
+              <div className="verticalDiv"/>
               <Link to="/Home/Counter">Conter</Link>
          </div>
        );
