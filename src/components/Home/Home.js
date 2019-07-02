@@ -19,19 +19,20 @@ import React,{
   } from 'react-router-dom';
 
   import {
-   Link
-} from 'react-router-dom';
-
+      Link
+  } from 'react-router-dom';
 
  /**
   * Components
   */
+ 
 
- import './welcomePage.scss';
+ 
  /**
   * Styles
   */
  
+  import './Home.scss';
 
   /**
   * Constants
@@ -62,9 +63,10 @@ import React,{
  
     render(){
        return(
-        <div>
-              <div className="welcomePage">Welcome</div>
-              <Link to="/Home">Press to visit home page</Link>
+        <div className="header">
+              <a href="http://localhost:8084/">Welcome</a>
+              <div className="emptyDiv"/>
+              <Link to="/Home/Counter">Conter</Link>
          </div>
        );
     }
@@ -75,6 +77,3 @@ import React,{
   */
   
  export default WelcomePage;
-
-
- 

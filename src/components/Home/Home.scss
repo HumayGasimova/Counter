@@ -1,0 +1,24 @@
+.header{
+    background: rgb(248, 243, 227);
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    padding-top: 10px;
+    text-decoration: none;
+    a {
+        text-decoration: none; 
+        color: black;
+        &:hover {
+            color: orange;
+        }
+    }
+    
+}
+
+.emptyDiv{
+    width: 20px;
+}

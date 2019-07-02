@@ -21,7 +21,7 @@ import React,{
  
     render(){
        return(
-         <div className="header">
+         <div className="resultWindow">
           {this.props.value}
        </div>
        );

@@ -80,13 +80,11 @@ export class App extends Component {
       return(
        <div>
            <Header value={this.props.counter}/>
-          <Link to="/App/next">Next</Link>
-          <br/>
-          <Link to={{
+          {/* <Link to={{
              pathname: '/new',
              hash:'submit',
              search:'?quick-submit=true'
-          }}>New</Link>
+          }}>New</Link> */}
            <div>
              <InputField
                onIncrementCounter={this.props.onIncrementCounter}
@@ -114,6 +112,9 @@ export class App extends Component {
                  )
               })}
            </ul>
+           <div>
+           {console.log(this.props)}
+           </div>
            </div>
         </div>
       );

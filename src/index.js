@@ -27,27 +27,31 @@ import store from "./store/store";
  * Components
  */
 
-import App from './components/App';
 import WelcomePage from './components/WelcomePage/welcomePage';
-
+import Home from './components/Home/Home';
+import App from './components/App';
 
 ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
-         <WelcomePage>
+         <Switch>
                {/* <Route 
                   exact 
                   path="/"
                   render={()=>(<div>Hey</div>)}/> */}
-               {/* <Route 
+               <Route 
                   exact 
                   path="/"
-                  component={WelcomePage}/> */}
-               {/* <Route 
+                  component={WelcomePage}/>
+               <Route 
                   exact 
-                  path="/App"
-                  component={App}/> */}
-         </WelcomePage>
+                  path="/Home"
+                  component={Home}/>
+               <Route 
+                  exact 
+                  path="/Home/Counter"
+                  component={App}/>
+            </Switch>
          </ConnectedRouter>
       </Provider>,
    document.getElementById('app')
