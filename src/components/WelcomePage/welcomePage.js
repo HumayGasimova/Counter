@@ -14,6 +14,11 @@ import React,{
      bindActionCreators
   } from 'redux';
  
+  import {
+     Route
+  } from 'react-router-dom';
+
+  import App from '../App';
  /**
   * Components
   */
@@ -58,6 +63,11 @@ import React,{
            <ul>
               <li>Home</li>
               <a href="http://localhost:8084/App">App</a>
+
+              <Route 
+                  exact 
+                  path="/App"
+                  component={App}/>
            </ul>
          </div>
        );

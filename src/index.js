@@ -34,20 +34,20 @@ import WelcomePage from './components/WelcomePage/welcomePage';
 ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
-         <Switch>
+         <WelcomePage>
                {/* <Route 
                   exact 
                   path="/"
                   render={()=>(<div>Hey</div>)}/> */}
-               <Route 
+               {/* <Route 
                   exact 
                   path="/"
-                  component={WelcomePage}/>
-               <Route 
+                  component={WelcomePage}/> */}
+               {/* <Route 
                   exact 
                   path="/App"
-                  component={App}/>
-            </Switch>
+                  component={App}/> */}
+         </WelcomePage>
          </ConnectedRouter>
       </Provider>,
    document.getElementById('app')
