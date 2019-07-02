@@ -35,13 +35,13 @@ ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
          <Switch>
+               {/* <Route 
+                  exact 
+                  path="/"
+                  render={()=>(<div>Hey</div>)}/> */}
                <Route 
                   exact 
                   path="/"
-                  render={()=>(<div>Hey</div>)}/>
-               <Route 
-                  exact 
-                  path="/WelcomePage"
                   component={WelcomePage}/>
                <Route 
                   exact 

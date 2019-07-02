@@ -13,6 +13,9 @@ import {
  import {
     bindActionCreators
  } from 'redux';
+ import {
+    Link
+   } from 'react-router-dom';
 
 /**
  * Components
@@ -77,7 +80,7 @@ export class App extends Component {
       return(
        <div>
            <Header value={this.props.counter}/>
-           
+          <Link to="/App/next">Next</Link>
            <div>
              <InputField
                onIncrementCounter={this.props.onIncrementCounter}

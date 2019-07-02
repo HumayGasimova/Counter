@@ -55,7 +55,10 @@ import React,{
     render(){
        return(
         <div>
-           Welcome
+           <ul>
+              <li>Home</li>
+              <a href="http://localhost:8084/App">App</a>
+           </ul>
          </div>
        );
     }
