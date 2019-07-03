@@ -15,12 +15,11 @@ import React,{
   } from 'redux';
  
   import {
-     Route
+     BrowserRouter as Router,
+     Route,
+     Link
   } from 'react-router-dom';
 
-  import {
-      Link
-  } from 'react-router-dom';
 
  /**
   * Components
@@ -37,7 +36,7 @@ import React,{
   /**
   * Constants
   */
- 
+ import App from '../App';
  
   /**
   * Actions
@@ -63,13 +62,30 @@ import React,{
  
     render(){
        return(
-        <div className="header">
-              <a href="http://localhost:8084/">Welcome</a>
-              <div className="verticalDiv"/>
-              <Link to={{
-                 pathname: this.props.match.url + '/Counter'
-              }}>Conter</Link>
-         </div>
+          <Router>
+               <div>
+                  <div className="header">
+                        <a href="http://localhost:8084/">Welcome</a>
+                        <div className="verticalDiv"/>
+                        <Link to={{
+                           pathname: this.props.match.url + '/Counter'
+                        }}>Conter</Link>
+                        <Link to={{
+                           pathname: this.props.match.url + '/Next'
+                        }}>Next</Link>
+                     </div>
+                  <div>
+                        <Route
+                           exact 
+                           path={this.props.match.url + "/Counter"}
+                           component={App}/>
+                            <Route
+                           exact 
+                           path={this.props.match.url + "/Next"}
+                           render={()=>(<div>Hey</div>)}/>
+                  </div>
+            </div>
+        </Router>
        );
     }
  }

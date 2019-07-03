@@ -34,24 +34,23 @@ import App from './components/App';
 ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
-         <Switch>
-               {/* <Route 
-                  exact 
-                  path="/"
-                  render={()=>(<div>Hey</div>)}/> */}
-               <Route 
-                  exact 
-                  path="/"
-                  component={WelcomePage}/>
-               <Route 
-                  exact 
-                  path="/Home"
-                  component={Home}/>
-               <Route 
-                  exact 
-                  path="/Home/Counter"
-                  component={App}/>
-            </Switch>
+            <Switch>
+                  {/* <Route 
+                     exact 
+                     path="/"
+                     render={()=>(<div>Hey</div>)}/> */}
+                  <Route 
+                     exact 
+                     path="/"
+                     component={WelcomePage}/>
+                  <Route 
+                     exact 
+                     path="/Home"
+                     component={Home}/>
+                     {/*  render={
+                         props => <Home {...props}/>
+                      }/> */}
+               </Switch>
          </ConnectedRouter>
       </Provider>,
    document.getElementById('app')
