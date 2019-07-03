@@ -10,7 +10,8 @@ import {
 
 import {
    Route,
-   Switch
+   Switch,
+   Redirect
 } from 'react-router-dom';
 
 import {
@@ -41,8 +42,9 @@ ReactDOM.render(
                      render={()=>(<div>Hey</div>)}/> */}
                   <Route 
                      exact 
-                     path="/"
+                     path="/WelcomePage"
                      component={WelcomePage}/>
+                     <Redirect from="/" to="/welcomePage"/>
                   <Route 
                      // exact 
                      path="/Home"

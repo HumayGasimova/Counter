@@ -151,7 +151,7 @@ import React,{
                         <Route
                            exact 
                            path={this.props.match.url + "/Counter"}
-                           component={App}/>
+                           component={()=>(<App/>)}/>
                         <Route
                            exact 
                            path={this.props.match.url + "/Next"}
