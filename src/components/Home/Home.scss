@@ -6,20 +6,33 @@
     flex-direction: row;
     width: 100%;
     height: 50px;
-    padding-left: 20px;
-    padding-top: 10px;
     text-decoration: none;
     border: 10px solid rgb(241, 212, 114);
+    .activeTab {
+        display: flex;
+        justify-content: center;
+        padding-top: 5px;
+    }
+
     a {
         text-decoration: none; 
         color: black;
         &:hover {
             color: orange;
         }
+        // &:active {
+        //     color: green;
+        // }
     }
+    .my-active {
+        color: orange;
+        // border-left: 10px solid  rgb(241, 212, 114);
+        // border-right: 10px solid  rgb(241, 212, 114);
+    }
+    
     
 }
 
 .verticalDiv{
-    width: 20px;
+    width: 10px;
 }

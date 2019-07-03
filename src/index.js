@@ -44,7 +44,7 @@ ReactDOM.render(
                      path="/"
                      component={WelcomePage}/>
                   <Route 
-                     exact 
+                     // exact 
                      path="/Home"
                      component={Home}/>
                      {/*  render={

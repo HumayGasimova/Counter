@@ -17,7 +17,7 @@ import React,{
   import {
      BrowserRouter as Router,
      Route,
-     Link
+     NavLink
   } from 'react-router-dom';
 
 
@@ -62,30 +62,107 @@ import React,{
  
     render(){
        return(
-          <Router>
+         //  <Router>
                <div>
                   <div className="header">
-                        <a href="http://localhost:8084/">Welcome</a>
+                  <div className="activeTab">
+                           <div className="verticalDiv"/>
+                           <a href="http://localhost:8084/">Welcome</a>
+                           <div className="verticalDiv"/>
+                        </div>
+                        <div className="activeTab">
                         <div className="verticalDiv"/>
-                        <Link to={{
-                           pathname: this.props.match.url + '/Counter'
-                        }}>Conter</Link>
-                        <Link to={{
-                           pathname: this.props.match.url + '/Next'
-                        }}>Next</Link>
+                           <NavLink 
+                              to={{
+                                 pathname: this.props.match.url + '/Counter'
+                              }}
+                              activeClassName="my-active"
+                              // activeStyle={{
+                              //    color: "orange",
+                                 
+                              // }}
+                           >
+                                 Counter
+                           </NavLink>
+                           <div className="verticalDiv"/>
+                        </div>
+                        <div className="activeTab">
+                           <div className="verticalDiv"/>
+                           <NavLink 
+                              to={{
+                                 pathname: this.props.match.url + '/Next'
+                              }}
+                              activeClassName="active"
+                              activeStyle={{
+                                 color: "orange"
+                              }}
+                           >
+                              Next
+                           </NavLink>
+                           <div className="verticalDiv"/>
+                        </div>
+                        <div className="activeTab">
+                           <div className="verticalDiv"/>
+                           <NavLink 
+                              to={{
+                                 pathname: this.props.match.url + '/Next1'
+                              }}
+                              activeClassName="active"
+                              activeStyle={{
+                                 color: "orange"
+                              }}
+                           >
+                              Next1
+                           </NavLink>
+                           <div className="verticalDiv"/>
+                        </div>
+                        <div className="activeTab">
+                           <div className="verticalDiv"/>
+                           <NavLink 
+                              to={{
+                                 pathname: this.props.match.url + '/Next2'
+                              }}
+                              activeClassName="active"
+                              activeStyle={{
+                                 color: "orange"
+                              }}
+                           >
+                              Next2
+                           </NavLink>
+                           <div className="verticalDiv"/>
+                        </div>
+                        <div className="activeTab">
+                           <div className="verticalDiv"/>
+                           <NavLink 
+                              to={{
+                                 pathname: this.props.match.url + '/Next3'
+                              }}
+                              activeClassName="active"
+                              activeStyle={{
+                                 color: "orange"
+                              }}
+                           >
+                              Next3
+                           </NavLink>
+                           <div className="verticalDiv"/>
+                        </div>
                      </div>
                   <div>
                         <Route
                            exact 
                            path={this.props.match.url + "/Counter"}
                            component={App}/>
-                            <Route
+                        <Route
                            exact 
                            path={this.props.match.url + "/Next"}
                            render={()=>(<div>Hey</div>)}/>
+                        <Route
+                           exact 
+                           path={this.props.match.url + "/Next1"}
+                           render={()=>(<div>Next1</div>)}/>
                   </div>
             </div>
-        </Router>
+      //   </Router>
        );
     }
  }
