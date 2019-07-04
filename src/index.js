@@ -31,12 +31,13 @@ import store from "./store/store";
  */
 
 import WelcomePage from './components/WelcomePage/welcomePage';
-// import Home from './components/Home/Home';
+import Home from './components/Home/Home';
 import App from './components/App';
-import asyncComponent from './components/hoc/hoc'; 
-const AsyncHome = asyncComponent(() => { 
-   return  import('./components/Home/Home'); 
-}); 
+
+// import asyncComponent from './components/hoc/hoc'; 
+// const AsyncHome = asyncComponent(() => { 
+//    return  import('./components/Home/Home'); 
+// }); 
 
 // const Home = React.lazy(() =>  import('./components/Home/Home'));
 
@@ -52,7 +53,11 @@ ReactDOM.render(
                   <Route 
                      // exact 
                      path="/Home"
-                     component={AsyncHome}/>
+                     component={Home}/>
+                  {/* <Route 
+                     // exact 
+                     path="/Home"
+                     component={AsyncHome}/> */}
                   {/* <Route 
                      render={()=>(<h1>404</h1>)}/> */}
                   {/* <Route 

@@ -98,7 +98,8 @@ if (process.env.ENVIRONMENT !== 'production') {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const history = createBrowserHistory();
+// export const history = createBrowserHistory();
+export const history = createBrowserHistory({basename: '/my-app'});
 
 export default createStore(
     createRootReducer(history), 
