@@ -3,7 +3,7 @@
  */
 
 import React, {
-   Suspense
+   // Suspense
 } from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -33,36 +33,41 @@ import store from "./store/store";
 import WelcomePage from './components/WelcomePage/welcomePage';
 // import Home from './components/Home/Home';
 import App from './components/App';
-const Home = React.lazy(() =>  import('./components/Home/Home'));
+import asyncComponent from './components/hoc/hoc'; 
+const AsyncHome = asyncComponent(() => { 
+   return  import('./components/Home/Home'); 
+}); 
+
+// const Home = React.lazy(() =>  import('./components/Home/Home'));
 
 ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
             <Switch>
-                  {/* <Route 
-                     exact 
-                     path="/"
-                     render={()=>(<div>Hey</div>)}/> */}
-
-                     <Route
-                        // exact 
-                        path="/Home"
-                        render={() => (
-                           <Suspense fallback={<div>Loading...</div>}>
-                              <Home />
-                           </Suspense>
-                        )}/>
                   <Route 
                      exact 
                      path="/"
                      component={WelcomePage}/>
                   {/* <Redirect from="/" to="/welcomePage"/> */}
-                  {/* <Route 
+                  <Route 
                      // exact 
                      path="/Home"
-                     component={Home}/> */}
+                     component={AsyncHome}/>
                   {/* <Route 
                      render={()=>(<h1>404</h1>)}/> */}
+                  {/* <Route 
+                     exact 
+                     path="/"
+                     render={()=>(<div>Hey</div>)}/> */}
+
+                  {/* <Route
+                     // exact 
+                     path="/Home"
+                     render={() => (
+                        <Suspense fallback={<div>Loading...</div>}>
+                           <Home />
+                        </Suspense>
+                     )}/> */}
                </Switch>
          </ConnectedRouter>
       </Provider>,
