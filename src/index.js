@@ -44,11 +44,13 @@ ReactDOM.render(
                      exact 
                      path="/WelcomePage"
                      component={WelcomePage}/>
-                     <Redirect from="/" to="/welcomePage"/>
+                     {/* <Redirect from="/" to="/welcomePage"/> */}
                   <Route 
                      // exact 
                      path="/Home"
                      component={Home}/>
+                  <Route 
+                     render={()=>(<h1>404</h1>)}/>
                      {/*  render={
                          props => <Home {...props}/>
                       }/> */}
