@@ -3,7 +3,8 @@
  */
 
 import React,{
-    Component
+    Component,
+    Suspense
  } from 'react';
  
  import {
@@ -37,9 +38,9 @@ import React,{
   /**
   * Constants
   */
-//  import App from '../App';
+ import App from '../App';
 
-  import asyncComponent from '../hoc/hoc';
+   // const App = React.lazy(() =>  import('../App'));
 
   /**
   * Actions
@@ -48,10 +49,6 @@ import React,{
    /**
   * Const
   */
-
-  const AsyncApp = asyncComponent(() => {
-     return  import('../App');
-  });
 
  /**
   *  Post component definition and export
@@ -85,7 +82,7 @@ import React,{
                         <div className="verticalDiv"/>
                            <NavLink 
                               to={{
-                                 pathname: this.props.match.url + '/Counter'
+                                 pathname:   '/Home/Counter'
                               }}
                               activeClassName="my-active"
                               // activeStyle={{
@@ -101,7 +98,7 @@ import React,{
                            <div className="verticalDiv"/>
                            <NavLink 
                               to={{
-                                 pathname: this.props.match.url + '/Next'
+                                 pathname:   '/Home/Next'
                               }}
                               activeClassName="active"
                               activeStyle={{
@@ -116,7 +113,7 @@ import React,{
                            <div className="verticalDiv"/>
                            <NavLink 
                               to={{
-                                 pathname: this.props.match.url + '/Next1'
+                                 pathname:    '/Home/Next1'
                               }}
                               activeClassName="active"
                               activeStyle={{
@@ -131,7 +128,7 @@ import React,{
                            <div className="verticalDiv"/>
                            <NavLink 
                               to={{
-                                 pathname: this.props.match.url + '/Next2'
+                                 pathname:    '/Home/Next2'
                               }}
                               activeClassName="active"
                               activeStyle={{
@@ -146,7 +143,7 @@ import React,{
                            <div className="verticalDiv"/>
                            <NavLink 
                               to={{
-                                 pathname: this.props.match.url + '/Next3'
+                                 pathname:    '/Home/Next3'
                               }}
                               activeClassName="active"
                               activeStyle={{
@@ -161,19 +158,19 @@ import React,{
                   <div>
                         <Route
                            exact 
-                           path={this.props.match.url + "/Counter"}
-                           component={AsyncApp}/>
+                           path={   "/Home/Counter"}
+                           component={App}/>
                         {/* <Route
                            exact 
-                           path={this.props.match.url + "/Counter"}
+                           path={  + "/Counter"}
                            component={()=>(<App/>)}/> */}
                         <Route
                            exact 
-                           path={this.props.match.url + "/Next"}
+                           path={  "/Home/Next"}
                            render={()=>(<div>Hey</div>)}/>
                         <Route
                            exact 
-                           path={this.props.match.url + "/Next1"}
+                           path={  "/Home/Next1"}
                            render={()=>(<div>Next1</div>)}/>
                   </div>
             </div>

@@ -2,7 +2,9 @@
  * Libraries
  */
 
-import React from 'react';
+import React, {
+   Suspense
+} from 'react';
 import ReactDOM from 'react-dom';
 import {
    Provider
@@ -29,8 +31,9 @@ import store from "./store/store";
  */
 
 import WelcomePage from './components/WelcomePage/welcomePage';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
 import App from './components/App';
+const Home = React.lazy(() =>  import('./components/Home/Home'));
 
 ReactDOM.render(
    <Provider store={store}>
@@ -40,15 +43,24 @@ ReactDOM.render(
                      exact 
                      path="/"
                      render={()=>(<div>Hey</div>)}/> */}
+
+                     <Route
+                        // exact 
+                        path="/Home"
+                        render={() => (
+                           <Suspense fallback={<div>Loading...</div>}>
+                              <Home />
+                           </Suspense>
+                        )}/>
                   <Route 
                      exact 
                      path="/"
                      component={WelcomePage}/>
                   {/* <Redirect from="/" to="/welcomePage"/> */}
-                  <Route 
+                  {/* <Route 
                      // exact 
                      path="/Home"
-                     component={Home}/>
+                     component={Home}/> */}
                   {/* <Route 
                      render={()=>(<h1>404</h1>)}/> */}
                </Switch>
