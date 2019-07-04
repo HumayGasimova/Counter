@@ -21,6 +21,7 @@ import React,{
   } from 'react-router-dom';
 
 
+
  /**
   * Components
   */
@@ -36,16 +37,26 @@ import React,{
   /**
   * Constants
   */
- import App from '../App';
- 
+//  import App from '../App';
+
+  import asyncComponent from '../hoc/hoc';
+
   /**
   * Actions
   */
  
- 
+   /**
+  * Const
+  */
+
+  const AsyncApp = asyncComponent(() => {
+     return  import('../App');
+  });
+
  /**
   *  Post component definition and export
   */
+
  export class WelcomePage extends Component {
  
     /**
@@ -151,7 +162,11 @@ import React,{
                         <Route
                            exact 
                            path={this.props.match.url + "/Counter"}
-                           component={()=>(<App/>)}/>
+                           component={AsyncApp}/>
+                        {/* <Route
+                           exact 
+                           path={this.props.match.url + "/Counter"}
+                           component={()=>(<App/>)}/> */}
                         <Route
                            exact 
                            path={this.props.match.url + "/Next"}

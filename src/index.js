@@ -42,18 +42,15 @@ ReactDOM.render(
                      render={()=>(<div>Hey</div>)}/> */}
                   <Route 
                      exact 
-                     path="/WelcomePage"
+                     path="/"
                      component={WelcomePage}/>
-                     {/* <Redirect from="/" to="/welcomePage"/> */}
+                  {/* <Redirect from="/" to="/welcomePage"/> */}
                   <Route 
                      // exact 
                      path="/Home"
                      component={Home}/>
-                  <Route 
-                     render={()=>(<h1>404</h1>)}/>
-                     {/*  render={
-                         props => <Home {...props}/>
-                      }/> */}
+                  {/* <Route 
+                     render={()=>(<h1>404</h1>)}/> */}
                </Switch>
          </ConnectedRouter>
       </Provider>,
