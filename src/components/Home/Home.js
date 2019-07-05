@@ -18,7 +18,8 @@ import React,{
   import {
      BrowserRouter as Router,
      Route,
-     NavLink
+     NavLink,
+     Switch
   } from 'react-router-dom';
 
 
@@ -154,6 +155,7 @@ import React,{
                         </div>
                      </div>
                   <div>
+                     <Switch>
                         <Route
                            exact 
                            path={this.props.match.url + "/Counter"}
@@ -170,6 +172,7 @@ import React,{
                            exact 
                            path={this.props.match.url + "/Next1"}
                            render={()=>(<div>Next1</div>)}/>
+                     </Switch>
                   </div>
             </div>
       //   </Router>

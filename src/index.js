@@ -45,35 +45,36 @@ ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
             <Switch>
-                  <Route 
-                     exact 
-                     path="/"
-                     component={WelcomePage}/>
-                  {/* <Redirect from="/" to="/welcomePage"/> */}
-                  <Route 
-                     // exact 
-                     path="/Home"
-                     component={Home}/>
-                  {/* <Route 
-                     // exact 
-                     path="/Home"
-                     component={AsyncHome}/> */}
-                  {/* <Route 
-                     render={()=>(<h1>404</h1>)}/> */}
-                  {/* <Route 
-                     exact 
-                     path="/"
-                     render={()=>(<div>Hey</div>)}/> */}
+               <Route 
+                  exact 
+                  path="/"
+                  component={WelcomePage}/>
+               <Route 
+                  // exact 
+                  path="/Home"
+                  component={Home}/>
+               {/* <Redirect from="/" to="/welcomePage"/> */}
+               
+               {/* <Route 
+                  // exact 
+                  path="/Home"
+                  component={AsyncHome}/> */}
+               {/* <Route 
+                  render={()=>(<h1>404</h1>)}/> */}
+               {/* <Route 
+                  exact 
+                  path="/"
+                  render={()=>(<div>Hey</div>)}/> */}
 
-                  {/* <Route
-                     // exact 
-                     path="/Home"
-                     render={() => (
-                        <Suspense fallback={<div>Loading...</div>}>
-                           <Home />
-                        </Suspense>
-                     )}/> */}
-               </Switch>
+               {/* <Route
+                  // exact 
+                  path="/Home"
+                  render={() => (
+                     <Suspense fallback={<div>Loading...</div>}>
+                        <Home />
+                     </Suspense>
+                  )}/> */}
+            </Switch>
          </ConnectedRouter>
       </Provider>,
    document.getElementById('app')

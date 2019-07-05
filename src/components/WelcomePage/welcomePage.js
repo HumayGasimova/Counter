@@ -19,7 +19,7 @@ import React,{
   } from 'react-router-dom';
 
   import {
-   Link
+   NavLink
 } from 'react-router-dom';
 
 import {
@@ -50,7 +50,7 @@ import {
  /**
   *  Post component definition and export
   */
- function WelcomePage () {
+ function WelcomePage (props1) {
    const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1]
    const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
    const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 5, tension: 350, friction: 40 } }))
@@ -65,7 +65,7 @@ import {
                Welcome
             </animated.div>
             <div className="horizontalDiv"/>
-         <Link className="linkHome" to="/Home">Press to visit home page</Link>
+         <NavLink className="linkHome" to={{ pathname: props1.match.url + 'Home'}}>Press to visit home page</NavLink>
    </div>
    );
     
