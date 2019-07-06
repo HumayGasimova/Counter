@@ -65,7 +65,7 @@ import {
                Welcome
             </animated.div>
             <div className="horizontalDiv"/>
-         <NavLink className="linkHome" to={{ pathname: props.match.url + 'Home'}}>Press to visit home page</NavLink>
+         <NavLink className="linkHome" to={{ pathname: '/Home'}}>Press to visit home page</NavLink>
    </div>
    );
     

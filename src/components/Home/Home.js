@@ -40,6 +40,8 @@ import React,{
   * Constants
   */
   import App from '../App';
+  import Tab from '../Tab/tab';
+import WelcomePage from '../WelcomePage/welcomePage';
 
   /**
   * Actions
@@ -50,10 +52,31 @@ import React,{
   */
 
  /**
-  *  Post component definition and export
+  * Home component definition and export
   */
 
- export class WelcomePage extends Component {
+ export class Home extends Component {
+
+   state={
+      tabs: [
+         {
+            title: "Welcome",
+            clicked: false
+         },
+         {
+            title: "Counter",
+            clicked: false
+         },
+         {
+            title: "Next",
+            clicked: false
+         },
+         {
+            title: "Next1",
+            clicked: false
+         }
+      ]
+   }
  
     /**
      * Constructor
@@ -62,6 +85,31 @@ import React,{
      /**
      * Methods
      */
+    renderTabs = () => {
+       return(
+         this.state.tabs.map((tab,i)=>{
+            return(
+               <div className="activeTab">
+                  <div className="verticalDiv"/>
+                  <NavLink 
+                     key={i}
+                     to={tab.title === "Welcome" ? {pathname: '/Welcome'} : {pathname: this.props.match.url + '/' + tab.title}}
+                     activeClassName="active-tab"
+                     // activeStyle={{
+                     //    color: "orange"
+                     // }}
+                  >
+                     <Tab
+                        title={tab.title}
+                        clicked={true}
+                     />
+                  </NavLink>
+                  <div className="verticalDiv"/>
+               </div>
+            )
+         })
+       )
+    }
  
     /**
      * Markup
@@ -72,8 +120,9 @@ import React,{
          //  <Router>
                <div>
                   <div className="header">
-                  <div className="activeTab">
-                           <div className="verticalDiv"/>
+                  
+                     {this.renderTabs()}
+                           {/* <div className="verticalDiv"/>
                            <a href="http://localhost:8084/">Welcome</a>
                            <div className="verticalDiv"/>
                         </div>
@@ -151,8 +200,8 @@ import React,{
                            >
                               Next3
                            </NavLink>
-                           <div className="verticalDiv"/>
-                        </div>
+                           <div className="verticalDiv"/> */}
+                       
                      </div>
                   <div>
                      <Switch>
@@ -184,4 +233,4 @@ import React,{
   * Prop types
   */
   
- export default WelcomePage;
+ export default Home;

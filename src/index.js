@@ -45,15 +45,16 @@ ReactDOM.render(
    <Provider store={store}>
       <ConnectedRouter history={history}>
             <Switch>
-               <Route 
-                  exact 
-                  path="/"
-                  component={WelcomePage}/>
-               <Route 
+            <Route 
                   // exact 
                   path="/Home"
                   component={Home}/>
-               {/* <Redirect from="/" to="/welcomePage"/> */}
+               <Route 
+                  exact 
+                  path="/Welcome"
+                  component={WelcomePage}/>
+             
+               <Redirect from="/" to="/Welcome"/>
                
                {/* <Route 
                   // exact 
