@@ -41,7 +41,6 @@ import React,{
   */
   import App from '../App';
   import Tab from '../Tab/tab';
-import WelcomePage from '../WelcomePage/welcomePage';
 
   /**
   * Actions
@@ -120,89 +119,8 @@ import WelcomePage from '../WelcomePage/welcomePage';
          //  <Router>
                <div>
                   <div className="header">
-                  
                      {this.renderTabs()}
-                           {/* <div className="verticalDiv"/>
-                           <a href="http://localhost:8084/">Welcome</a>
-                           <div className="verticalDiv"/>
-                        </div>
-                        <div className="activeTab">
-                        <div className="verticalDiv"/>
-                           <NavLink 
-                              to={{
-                                 pathname: this.props.match.url + '/Counter'
-                              }}
-                              activeClassName="my-active"
-                              // activeStyle={{
-                              //    color: "orange",
-                                 
-                              // }}
-                           >
-                                 Counter
-                           </NavLink>
-                           <div className="verticalDiv"/>
-                        </div>
-                        <div className="activeTab">
-                           <div className="verticalDiv"/>
-                           <NavLink 
-                              to={{
-                                 pathname: this.props.match.url + '/Next'
-                              }}
-                              activeClassName="active"
-                              activeStyle={{
-                                 color: "orange"
-                              }}
-                           >
-                              Next
-                           </NavLink>
-                           <div className="verticalDiv"/>
-                        </div>
-                        <div className="activeTab">
-                           <div className="verticalDiv"/>
-                           <NavLink 
-                              to={{
-                                 pathname: this.props.match.url + '/Next1'
-                              }}
-                              activeClassName="active"
-                              activeStyle={{
-                                 color: "orange"
-                              }}
-                           >
-                              Next1
-                           </NavLink>
-                           <div className="verticalDiv"/>
-                        </div>
-                        <div className="activeTab">
-                           <div className="verticalDiv"/>
-                           <NavLink 
-                              to={{
-                                 pathname: this.props.match.url + '/Next2'
-                              }}
-                              activeClassName="active"
-                              activeStyle={{
-                                 color: "orange"
-                              }}
-                           >
-                              Next2
-                           </NavLink>
-                           <div className="verticalDiv"/>
-                        </div>
-                        <div className="activeTab">
-                           <div className="verticalDiv"/>
-                           <NavLink 
-                              to={{
-                                 pathname: this.props.match.url + '/Next3'
-                              }}
-                              activeClassName="active"
-                              activeStyle={{
-                                 color: "orange"
-                              }}
-                           >
-                              Next3
-                           </NavLink>
-                           <div className="verticalDiv"/> */}
-                       
-                     </div>
+                  </div>
                   <div>
                      <Switch>
                         <Route
