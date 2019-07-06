@@ -41,6 +41,7 @@ import React,{
   */
   import App from '../App';
   import Tab from '../Tab/tab';
+  import Result from '../Result/result';
 
   /**
   * Actions
@@ -59,20 +60,16 @@ import React,{
    state={
       tabs: [
          {
-            title: "Welcome",
-            clicked: false
+            title: "Welcome"
          },
          {
-            title: "Counter",
-            clicked: false
+            title: "Counter"
          },
          {
-            title: "Next",
-            clicked: false
+            title: "Result"
          },
          {
-            title: "Next1",
-            clicked: false
+            title: "Next1"
          }
       ]
    }
@@ -88,10 +85,10 @@ import React,{
        return(
          this.state.tabs.map((tab,i)=>{
             return(
-               <div className="activeTab">
+               <div className="activeTab"
+                    key={i}>
                   <div className="verticalDiv"/>
-                  <NavLink 
-                     key={i}
+                  <NavLink
                      to={tab.title === "Welcome" ? {pathname: '/Welcome'} : {pathname: this.props.match.url + '/' + tab.title}}
                      activeClassName="active-tab"
                      // activeStyle={{
@@ -116,33 +113,31 @@ import React,{
  
     render(){
        return(
-         //  <Router>
+            <div>
+               <div className="header">
+                  {this.renderTabs()}
+               </div>
                <div>
-                  <div className="header">
-                     {this.renderTabs()}
-                  </div>
-                  <div>
-                     <Switch>
-                        <Route
-                           exact 
-                           path={this.props.match.url + "/Counter"}
-                           component={App}/>
-                        {/* <Route
-                           exact 
-                           path={this.props.match.url + "/Counter"}
-                           component={()=>(<App/>)}/> */}
-                        <Route
-                           exact 
-                           path={this.props.match.url + "/Next"}
-                           render={()=>(<div>Hey</div>)}/>
-                        <Route
-                           exact 
-                           path={this.props.match.url + "/Next1"}
-                           render={()=>(<div>Next1</div>)}/>
-                     </Switch>
-                  </div>
-            </div>
-      //   </Router>
+                  <Switch>
+                     <Route
+                        exact 
+                        path={this.props.match.url + "/Counter"}
+                        component={App}/>
+                     {/* <Route
+                        exact 
+                        path={this.props.match.url + "/Counter"}
+                        component={()=>(<App/>)}/> */}
+                     <Route
+                        exact 
+                        path={this.props.match.url + "/Result"}
+                        component={Result}/>
+                     <Route
+                        exact 
+                        path={this.props.match.url + "/Next1"}
+                        render={()=>(<div>Next1</div>)}/>
+                  </Switch>
+               </div>
+         </div>
        );
     }
  }

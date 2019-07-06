@@ -24,7 +24,7 @@ import {
 import Header from './Header/header';
 import Button from './Button/button';
 import InputField from './InputField/inputField';
-
+import Result from '../components/Result/result';
 /**
  * Styles
  */
@@ -93,29 +93,7 @@ export class App extends Component {
                divideCounter={this.props.divideCounter}
              />
            </div>
-           <div>
-                 <Button 
-                        onClick={() => this.props.storeResult(this.props.counter)}
-                        >
-                            Result
-                </Button>
-           </div>
-           <div>
-           <ul>
-              {this.props.storedResults.map((strResult)=>{
-                 return(
-                     <li key={strResult.id}
-                        onClick={()=>this.props.deleteResult(strResult.id)}
-                        >
-                        {strResult.value}
-                     </li>
-                 )
-              })}
-           </ul>
-           <div>
-           {console.log(this.props)}
-           </div>
-           </div>
+           <Result/>
         </div>
       );
    }
