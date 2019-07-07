@@ -14,7 +14,8 @@ import {
     bindActionCreators
  } from 'redux';
  import {
-    Link
+   Route,
+   Switch
    } from 'react-router-dom';
 
 /**
@@ -72,6 +73,10 @@ export class App extends Component {
     })
    }
 
+   renderResult = () => {
+      this.props.history.replace('Counter/Result');
+   }
+
    /**
     * Markup
     */
@@ -86,14 +91,22 @@ export class App extends Component {
              search:'?quick-submit=true'
           }}>New</Link> */}
            <div>
-             <InputField
+            <InputField
                onIncrementCounter={this.props.onIncrementCounter}
                onDecrementCounter={this.props.onDecrementCounter}
                multiplyCounter={this.props.multiplyCounter}
                divideCounter={this.props.divideCounter}
              />
            </div>
-           <Result/>
+           <Button
+            onClick={this.renderResult}
+            >Show result</Button>
+         
+           <Route
+               path={this.props.match.path + "/Result"}
+               component={Result}/>
+         
+               {console.log(this.props.match.path)}
         </div>
       );
    }

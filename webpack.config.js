@@ -1,4 +1,10 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
+  template: __dirname + '/src/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
 module.exports = {
   entry: __dirname + '/src/index.js',
@@ -22,6 +28,16 @@ module.exports = {
       {
         test: /\.(png|gif|jpg|jpeg|svg|ico)$/,
         use:  'file-loader?name=[name].[ext]'
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,  
+        use: [{
+            loader: 'url-loader',
+            options: { 
+                limit: 8000, // Convert images < 8kb to base64 strings
+                name: 'images/[hash]-[name].[ext]'
+            } 
+        }]
       },
       {
         test: /\.(jpe?g|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
@@ -49,17 +65,13 @@ module.exports = {
   },
   output: {
     filename: 'transformed.js',
-    path: __dirname + '/build'
+    path: __dirname + '/dist',
+    publicPath: __dirname + '/dist'
   },
   devServer: {
-    contentBase: './build',
+    contentBase: './dist',
     port: 8084,
     historyApiFallback: true
   },
-  plugins: [
-    new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
-    })
-  ]
+  plugins: [HTMLWebpackPluginConfig]
 };

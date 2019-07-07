@@ -5,18 +5,6 @@
 import React,{
     Component
  } from 'react';
- 
- import {
-     connect
-  } from 'react-redux';
- 
-  import {
-     bindActionCreators
-  } from 'redux';
- 
-  import {
-     Route
-  } from 'react-router-dom';
 
   import {
    NavLink
@@ -31,11 +19,13 @@ import {
   * Components
   */
 
- import './welcomePage.scss';
+import Logo from '../../Images/transparent-red-hearts-png-clipart-picture-5a3b5499d4d249.0227940315138377218717.jpg';
+
  /**
   * Styles
   */
- 
+
+   import './welcomePage.scss';
 
   /**
   * Constants
@@ -66,6 +56,8 @@ import {
             </animated.div>
             <div className="horizontalDiv"/>
          <NavLink className="linkHome" to={{ pathname: '/Home'}}>Press to visit home page</NavLink>
+         <img src={Logo} alt="Hearts"/>
+         <div className="background"></div>
    </div>
    );
     

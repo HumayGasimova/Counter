@@ -66,7 +66,7 @@ import React,{
             title: "Counter"
          },
          {
-            title: "Result"
+            title: "Next"
          },
          {
             title: "Next1"
@@ -120,7 +120,6 @@ import React,{
                <div>
                   <Switch>
                      <Route
-                        exact 
                         path={this.props.match.url + "/Counter"}
                         component={App}/>
                      {/* <Route
@@ -129,8 +128,8 @@ import React,{
                         component={()=>(<App/>)}/> */}
                      <Route
                         exact 
-                        path={this.props.match.url + "/Result"}
-                        component={Result}/>
+                        path={this.props.match.url + "/Next"}
+                        render={()=>(<div>Next</div>)}/>
                      <Route
                         exact 
                         path={this.props.match.url + "/Next1"}
