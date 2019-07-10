@@ -51,7 +51,7 @@ ReactDOM.render(
                   component={Home}/>
                <Route 
                   exact 
-                  path="/Welcome"
+                  path="/"
                   component={WelcomePage}/>
              
                {/* <Redirect from="/" to="/Welcome"/> */}
