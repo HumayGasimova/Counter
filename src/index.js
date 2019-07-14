@@ -33,6 +33,7 @@ import store from "./store/store";
 import WelcomePage from './components/WelcomePage/welcomePage';
 import Home from './components/Home/Home';
 import App from './components/App';
+import SimpleComponent from './components/SimpleComponent/simpleComponent';
 
 // import asyncComponent from './components/hoc/hoc'; 
 // const AsyncHome = asyncComponent(() => { 

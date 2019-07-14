@@ -17,32 +17,32 @@ module.exports = {
           loader: "babel-loader"
         }
       },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          }
-        ]
-      },
+      // {
+      //   test: /\.html$/,
+      //   use: [
+      //     {
+      //       loader: "html-loader"
+      //     }
+      //   ]
+      // },
       {
         test: /\.(png|gif|jpg|jpeg|svg|ico)$/,
         use:  'file-loader?name=[name].[ext]'
       },
-      {
-        test: /\.(png|jp(e*)g|svg)$/,  
-        use: [{
-            loader: 'url-loader',
-            options: { 
-                limit: 8000, // Convert images < 8kb to base64 strings
-                name: 'images/[hash]-[name].[ext]'
-            } 
-        }]
-      },
-      {
-        test: /\.(jpe?g|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-        use: 'base64-inline-loader'
-      },
+      // {
+      //   test: /\.(png|jp(e*)g|svg)$/,  
+      //   use: [{
+      //       loader: 'url-loader',
+      //       options: { 
+      //           limit: 8000, // Convert images < 8kb to base64 strings
+      //           name: 'images/[hash]-[name].[ext]'
+      //       } 
+      //   }]
+      // },
+      // {
+      //   test: /\.(jpe?g|png|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+      //   use: 'base64-inline-loader'
+      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
@@ -64,14 +64,16 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'transformed.js',
     path: __dirname + '/dist',
-    publicPath: __dirname + '/dist'
+    filename: 'transformed.js',
+    publicPath: '/'
   },
   devServer: {
     contentBase: './dist',
     port: 8084,
-    historyApiFallback: true
+    historyApiFallback: true,
+    publicPath: '/',
+    contentBase:__dirname + '/dist'
   },
   plugins: [HTMLWebpackPluginConfig]
 };
