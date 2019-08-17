@@ -52,10 +52,10 @@ ReactDOM.render(
                   component={Home}/>
                <Route 
                   exact 
-                  path="/"
+                  path="/welcome"
                   component={WelcomePage}/>
              
-               {/* <Redirect from="/" to="/Welcome"/> */}
+               <Redirect from="/" to="/Welcome"/>
                
                {/* <Route 
                   // exact 

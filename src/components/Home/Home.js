@@ -40,6 +40,7 @@ import React,{
   * Constants
   */
   import App from '../App';
+  import SignUp from '../Auth/SignUp/signUp';
   import Tab from '../Tab/tab';
   import Result from '../Result/result';
 
@@ -66,7 +67,7 @@ import React,{
             title: "Counter"
          },
          {
-            title: "Next"
+            title: "Authenticate"
          },
          {
             title: "Next1"
@@ -128,8 +129,8 @@ import React,{
                         component={()=>(<App/>)}/> */}
                      <Route
                         exact 
-                        path={this.props.match.url + "/Next"}
-                        render={()=>(<div>Next</div>)}/>
+                        path={this.props.match.url + "/Authenticate"}
+                        component={SignUp}/>
                      <Route
                         exact 
                         path={this.props.match.url + "/Next1"}

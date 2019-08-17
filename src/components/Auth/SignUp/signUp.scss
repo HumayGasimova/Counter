@@ -1,0 +1,32 @@
+.sign-up {
+    margin: 20px;
+    position: relative;
+    left: calc(50% - 200px);
+    top: 7%;
+    border: 1px solid rgb(182, 119, 47);
+    border-radius: 7px;
+    box-shadow: 3px 2px 5px 0px rgb(221, 214, 214);
+    width: 400px;
+    height: 430px;
+    // transition: all 0.3s ease-out;
+    // z-index: 500;
+}
+.sign-up-child {
+    height: inherit;
+    position: relative;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.sign-up-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    color:black;
+}
+
+.sign-up-close-button{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    color: black;
+}

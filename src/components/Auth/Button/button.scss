@@ -1,0 +1,11 @@
+.button {
+    width: 120px;
+    &:disabled{
+        color:rgb(150, 150, 150);
+        cursor: not-allowed;
+    }
+}
+.clicked {
+    height: 360px;
+}
+
