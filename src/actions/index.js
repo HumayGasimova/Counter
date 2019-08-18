@@ -11,5 +11,6 @@ export {
 } from './resultActions';
 
 export {
-    auth
+    auth,
+    logout
 } from './authActions';

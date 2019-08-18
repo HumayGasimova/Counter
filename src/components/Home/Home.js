@@ -43,6 +43,7 @@ import React,{
   import SignUp from '../Auth/SignUp/signUp';
   import Tab from '../Tab/tab';
   import Result from '../Result/result';
+  import Logout from '../Auth/Logout/logout';
 
   /**
   * Actions
@@ -70,7 +71,7 @@ import React,{
             title: "Authenticate"
          },
          {
-            title: "Next1"
+            title: "Logout"
          }
       ]
    }
@@ -133,8 +134,8 @@ import React,{
                         component={SignUp}/>
                      <Route
                         exact 
-                        path={this.props.match.url + "/Next1"}
-                        render={()=>(<div>Next1</div>)}/>
+                        path={this.props.match.url + "/Logout"}
+                        component={Logout}/>
                   </Switch>
                </div>
          </div>
@@ -145,5 +146,15 @@ import React,{
  /**
   * Prop types
   */
-  
- export default Home;
+ export default connect(
+   (state) => {
+       return {
+         isAuthenticated: state.auth.token !== null
+       };
+    },
+   (dispatch) => {
+      return {
+         // onAuth: bindActionCreators(Actions.auth, dispatch)
+      };
+   }
+)(Home);
