@@ -226,6 +226,7 @@ class SignUp extends Component {
                     className="sign-up"
                     onSubmit={this.onSubmitHandler}
                 >
+                    {this.errorMesage()}
                     <div className="sign-up-child">
                         <div className="sign-up-close-button" onClick={this.closeSignUpForm}>X</div>
                         <div className="sign-up-text">{this.state.isSignup ? "SIGN UP" : "SIGN IN"}</div>
@@ -264,6 +265,14 @@ class SignUp extends Component {
         )
     }
 
+    errorMesage = () => {
+        if(this.props.error){
+            return(
+                <p>{this.props.error.message}</p>
+            )
+        }
+    }
+
     render(){
         return(
             <div>
@@ -277,7 +286,8 @@ class SignUp extends Component {
 export default connect(
     (state) => {
         return {
-           loading: state.auth.loading 
+           loading: state.auth.loading,
+           error: state.auth.error
         };
      },
     (dispatch) => {
