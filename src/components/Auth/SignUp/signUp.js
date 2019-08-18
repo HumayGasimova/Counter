@@ -14,6 +14,9 @@ import {
     bindActionCreators
  } from 'redux';
 
+ import {
+    Redirect
+} from 'react-router-dom';
 /**
  * Components
  */
@@ -277,7 +280,7 @@ class SignUp extends Component {
         return(
             <div>
                 {!this.props.loading ? this.renderInput() : <Spinner/>}
-                {console.log(this.props.loading)}
+                {this.props.isAuthenticated ? <Redirect to="/"/> : null}
             </div>
         );
     }
@@ -287,7 +290,8 @@ export default connect(
     (state) => {
         return {
            loading: state.auth.loading,
-           error: state.auth.error
+           error: state.auth.error,
+           isAuthenticated: state.auth.token !== null
         };
      },
     (dispatch) => {
