@@ -6,13 +6,13 @@ import React,{
     Component
 } from 'react';
 
-// import {
-//     connect
-//  } from 'react-redux';
+import {
+    connect
+ } from 'react-redux';
 
-//  import {
-//     bindActionCreators
-//  } from 'redux';
+ import {
+    bindActionCreators
+ } from 'redux';
 
 /**
  * Components
@@ -48,40 +48,6 @@ class SignUp extends Component {
         super(props);
         this.state={
             signUpForm: {
-                name: {
-                    elementType: 'input',
-                    elementConfig: {
-                        type: 'text',
-                        placeholder: ' Name'
-                    },
-                    value: '',
-                    validation: [
-                        {
-                            required: true,
-                            valid: "false"
-                        }
-                    ],
-                    validField: "false",
-                    touched: "false",
-                    errorMessage: []
-                },
-                LastName: {
-                    elementType: 'input',
-                    elementConfig: {
-                        type: 'text',
-                        placeholder: ' Last Name'
-                    },
-                    value: '',
-                    validation: [
-                        {
-                            required: true,
-                            valid: "false"
-                        }
-                    ],
-                    validField: "false",
-                    touched: "false",
-                    errorMessage: []
-                },
                 email: {
                     elementType: 'input',
                     elementConfig: {
@@ -92,6 +58,10 @@ class SignUp extends Component {
                     validation: [
                         {
                             required: true,
+                            valid: "false"
+                        },
+                        {
+                            isEmail: true,
                             valid: "false"
                         }
                     ],
@@ -121,7 +91,8 @@ class SignUp extends Component {
                     errorMessage: []
                 }
             },
-            formIsValid: false
+            formIsValid: false,
+            isSignup: true
         }
     }
     
@@ -145,11 +116,6 @@ class SignUp extends Component {
     updatedFormElement.touched = "true";
     updatedFormElement.validField = this.checkValidityOfField(updatedFormElement.validation);
     updatedSignUpForm[inputIdentifier] = updatedFormElement;
-   
-    // let validField = true;
-    // for(let inputIdentifier in updatedSignUpForm){
-    //     formIsValid = updatedSignUpForm[inputIdentifier].valid === "true" && formIsValid;
-    // }
 
     let formIsValid = true;
     for(let inputIdentifier in updatedSignUpForm){
@@ -177,15 +143,16 @@ class SignUp extends Component {
         if(rules){
             rules.map((rule) => {
                 if(rule.required && rule.valid === "false"){
-                    errors.push(`Please enter valid ${inputIdentifier}`)
+                    errors.push(`Please enter ${inputIdentifier}`)
                 }
                 if(rule.minLength && rule.valid === "false"){
                     errors.push(`${inputIdentifier.charAt(0).toUpperCase() + inputIdentifier.slice(1)} should be more than 8 charachters!`)
                 }
+                if(rule.isEmail && rule.valid === "false"){
+                    errors.push(`Please enter valid ${inputIdentifier}`)
+                }
             })
         }
-
-        // console.log(errors)
         return errors;
     }
 
@@ -201,6 +168,20 @@ class SignUp extends Component {
                     let isValid = value.length >= rule.minLength;
                     validation.push({...rule,valid: isValid.toString()});
                 }
+                if(rule.maxLength){
+                    let isValid = value.length <= rules.maxLength 
+                    validation.push({...rule,valid: isValid.toString()});
+                }
+                if(rule.isEmail){
+                    const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+                    let isValid = pattern.test(value);
+                    validation.push({...rule,valid: isValid.toString()});
+                }
+                if(rule.isNumeric){
+                    const pattern = /^\d+$/;
+                    let isValid = pattern.test(value);
+                    validation.push({...rule,valid: isValid.toString()});
+                }
             
             })
         return validation;
@@ -209,19 +190,26 @@ class SignUp extends Component {
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        const formData = {};
+        this.props.onAuth(this.state.signUpForm.email.value, this.state.signUpForm.password.value, this.state.isSignup);
+        // const formData = {};
 
-        for (let formElementIdentifier in this.state.signUpForm) {
-            formData[formElementIdentifier] = this.state.signUpForm[formElementIdentifier].value
-        }
+        // for (let formElementIdentifier in this.state.signUpForm) {
+        //     formData[formElementIdentifier] = this.state.signUpForm[formElementIdentifier].value
+        // }
 
-        const order = {
-            orderData: formData
-        }
+        // const order = {
+        //     orderData: formData
+        // }
 
-        axios.post('/orders.json', order )
-        .then(res=>console.log(res))
-        .catch(err=> console.log(err))
+        // axios.post('/orders.json', order )
+        // .then(res=>console.log(res))
+        // .catch(err=> console.log(err))
+    }
+
+    switchAuthModeHandler = () => {
+        this.setState(prevState => {
+            return{isSignup: !prevState.isSignup}
+        })
     }
 
     renderInput = () => {
@@ -232,43 +220,46 @@ class SignUp extends Component {
                 config: this.state.signUpForm[key]
             })
         }
-        console.log(formElementsArray)
         return(
-            <form 
-                className="sign-up"
-                onSubmit={this.onSubmitHandler}
-            >
-                <div className="sign-up-child">
-                    <div className="sign-up-close-button" onClick={this.closeSignUpForm}>X</div>
-                    <div className="sign-up-text">SIGN UP</div>
-                    <EmptyDivV1/>
-                    {formElementsArray.map((formElement) => {
-                        // console.log(!formElement.config.valid)
-                        return(
-                            <div key={formElement.id}>
-                                <Input 
-                                    classnameerror={"errors"}
-                                    errormessage={formElement.config.errorMessage}
-                                    valid={formElement.config.validField}
-                                    elementtype={formElement.config.elementType} 
-                                    elementconfig={formElement.config.elementConfig}
-                                    value={formElement.config.value}
-                                    onChange={(event) => this.inputChangedHandler(event, formElement.id)}
-                                    shouldvalidate={formElement.config.validation}
-                                    className={"input_error"}
-                                    touched={formElement.config.touched}
-                                />
-                                <EmptyDivV1/>
-                            </div>
-                        )
-                    })}
-                    <Button 
-                        className={"button"}
-                        text={"SIGN UP"}
-                        disabled={!this.state.formIsValid}
-                    />
-                </div>
-            </form>
+                <form 
+                    className="sign-up"
+                    onSubmit={this.onSubmitHandler}
+                >
+                    <div className="sign-up-child">
+                        <div className="sign-up-close-button" onClick={this.closeSignUpForm}>X</div>
+                        <div className="sign-up-text">{this.state.isSignup ? "SIGN UP" : "SIGN IN"}</div>
+                        <EmptyDivV1/>
+                        {formElementsArray.map((formElement) => {
+                            return(
+                                <div key={formElement.id}>
+                                    <Input 
+                                        classnameerror={"errors"}
+                                        errormessage={formElement.config.errorMessage}
+                                        valid={formElement.config.validField}
+                                        elementtype={formElement.config.elementType} 
+                                        elementconfig={formElement.config.elementConfig}
+                                        value={formElement.config.value}
+                                        onChange={(event) => this.inputChangedHandler(event, formElement.id)}
+                                        shouldvalidate={formElement.config.validation}
+                                        className={"input_error"}
+                                        touched={formElement.config.touched}
+                                    />
+                                    <EmptyDivV1/>
+                                </div>
+                            )
+                        })}
+                        <Button 
+                            className={"button"}
+                            text={`${this.state.isSignup ? "Sign Up" : "Sign In"}`}
+                            disabled={!this.state.formIsValid}
+                        />
+                        <div
+                            onClick={this.switchAuthModeHandler}
+                        >
+                            {`Switch to ${this.state.isSignup ? "Sign Up" : "Sign In"}`}
+                        </div>
+                    </div>
+                </form>
         )
     }
 
@@ -276,18 +267,19 @@ class SignUp extends Component {
         return(
             <div>
                 {this.renderInput()}
+                {console.log(this.state)}
             </div>
         );
     }
 }
  
-// export default connect(
-//  null,
-//     (dispatch) => {
-//        return {
-//           userSignUpRequest: bindActionCreators(Actions.userSignUpRequest, dispatch),
-//        };
-//     }
-//  )(SignUp);
+export default connect(
+ null,
+    (dispatch) => {
+       return {
+          onAuth: bindActionCreators(Actions.auth, dispatch)
+       };
+    }
+ )(SignUp);
 
-export default SignUp;
+// export default SignUp;

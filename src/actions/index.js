@@ -9,3 +9,7 @@ export {
     storeResult,
     deleteResult
 } from './resultActions';
+
+export {
+    auth
+} from './authActions';
