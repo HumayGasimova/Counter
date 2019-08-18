@@ -21,6 +21,7 @@ import {
 import Input from '../Input/input';
 import Button from '../Button/button';
 import EmptyDivV1 from '../Empty/emptyDivV1';
+import Spinner from '../../Spinner/spinner';
 
 /**
  * Styles
@@ -266,15 +267,19 @@ class SignUp extends Component {
     render(){
         return(
             <div>
-                {this.renderInput()}
-                {console.log(this.state)}
+                {!this.props.loading ? this.renderInput() : <Spinner/>}
+                {console.log(this.props.loading)}
             </div>
         );
     }
 }
  
 export default connect(
- null,
+    (state) => {
+        return {
+           loading: state.auth.loading 
+        };
+     },
     (dispatch) => {
        return {
           onAuth: bindActionCreators(Actions.auth, dispatch)
